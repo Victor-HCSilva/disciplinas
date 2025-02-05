@@ -8,11 +8,14 @@
     <div class="container text-left" style="text-align: left !important;">
         {% if disciplinas %}
         {% for d in disciplinas %}
-            <p>Matéria - {{ d.nome }}{{ d.carga_horaria }} - Professor(a) - {{ d.professor }} - grupo: {{ d.grupo }}</p>
-            <p></p>
+            <p> <strong>Matéria</strong>  {{ d.nome_disciplina }} <br><strong>CH</strong>: {{ d.carga_horaria }}  <br><strong>Professor(a)</strong> : {{ d.professor }} <br><strong>grupo: </strong> <span class="text-danger">{{ d.grupo }}</span></p>
+            
             
             <a class="btn btn-danger" href="{% url 'delete' id=d.id %}">Apagar</a>
             <a class="btn btn-warning" href="{% url 'edit' id=d.id %}">Editar</a>
+            <br>
+            <br>
+            <br>
         {% endfor %}
     {% else %}
         <p>Sem disciplinas cadastradas</p>

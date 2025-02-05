@@ -10,17 +10,22 @@
     <title>{% block title %}{% endblock %}</title>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            <br>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+              <img src="{% static './360_F_227450952_KQCMShHPOPebUXklULsKsROk5AvN6H1H.jpg' %}" alt="Descrição da imagem">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">INÍCIO</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'list' %}">Ver matérias</a>
+              <a class="nav-link" aria-current="page" href="{% url 'index' %}">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'list' %}">Ver todas as matérias</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'list' %}">Ver matérias atuais</a>
