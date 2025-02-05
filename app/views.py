@@ -4,6 +4,13 @@ from . import functions as fc
 from . forms import *
 from django.http import Http404
 
+
+
+def grupos(grupo):
+    return Disciplina.objects.filter(grupo=grupo)
+
+
+
 def index(request):#POST
     form_disciplina = None  # Inicializa como None para verificar se foi processado
     
@@ -59,3 +66,22 @@ def delete(request, id):
 
     # Se for GET, exibe uma página de confirmação
     return render(request, uname.PATH_DELETE, {'disciplina': disciplina})
+
+def group(request):#GET
+    if (request.method == "GET"):
+        group1 = grupos(1)
+        group2 = grupos(2)
+        group3 = grupos(3)
+        disciplinas = Disciplina.objects.all()
+        
+        context = {
+            'disciplinas':disciplinas,
+            'INDEX':uname.INDEX ,
+            'grupo1':group1,
+            'grupo2':group2,
+            'grupo3':group3,
+        }
+        return render(request,uname.PATH_GROUP, context)
+    else:
+        raise Http404("Erro Tipo de requisição inválida")
+    

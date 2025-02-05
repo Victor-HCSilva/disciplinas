@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Listagem{% endblock %}
+<a href="{% url INDEX  %}">index</a>
+{% block content %}
+<div class="container text-left">
+    {% if disciplinas %}
+    {% if grupo1 or grupo2 or grupo3 %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>CH</th>
+                    <th>Professor(a)</th>
+                    <th>Grupo</th>
+                    {% if grupo1 %}<th>Turno</th>{% endif %}
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if grupo1 %}
+                    {% for d in grupo1 %}
+                        <tr>
+                            <td>{{ d.nome_disciplina }}</td>
+                            <td>{{ d.carga_horaria }}</td>
+                            <td>{{ d.professor }}</td>
+                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td>{{ d.turno }}</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                        
+                {% if grupo2 %}
+                    {% for d in grupo2 %}
+                        <tr>
+                            <td>{{ d.nome_disciplina }}</td>
+                            <td>{{ d.carga_horaria }}</td>
+                            <td>{{ d.professor }}</td>
+                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td>{{ d.turno }}</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
+                {% if grupo3 %}
+                    {% for d in grupo3 %}
+                        <tr>
+                            <td>{{ d.nome_disciplina }}</td>
+                            <td>{{ d.carga_horaria }}</td>
+                            <td>{{ d.professor }}</td>
+                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td>{{ d.turno }}</td>
+                            <td>
+                                
+                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há disciplinas em nenhum grupo.</p>
+    {% endif %}
+{% else %}
+    <p>Não há disciplinas cadastradas.</p>
+{% endif %}
+    </div>
+    
+{% endblock %}
