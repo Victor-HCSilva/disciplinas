@@ -1,49 +1,19 @@
 from django.db import models
 
-class Professor(models.Model):
-    nome = models.CharField(max_length=200)
-    # Outros campos do professor
-
-    def __str__(self):
-        return self.nome
-
-class Curso(models.Model):
-    nome = models.CharField(max_length=200)
-    # Outros campos do curso
-    
-    def __str__(self):
-        return self.nome
-
-class NomeDisciplina(models.Model):
-    nome = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nome
-
-class NomeLocal(models.Model):
-    nome = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nome
-
-class CargaHoraria(models.Model):
-    carga_horaria = models.CharField(max_length=10, blank=False)
-    
-    def __str__(self):
-        return self.carga_horaria
-
-class Codigo(models.Model):
-    codigo = models.CharField(max_length=10, blank=False)
-    
-    def __str__(self):
-        return self.codigo
-
-
 class Disciplina(models.Model):
-    nome = models.ForeignKey(NomeDisciplina, on_delete=models.CASCADE)
-    codigo = models.ForeignKey(Codigo, on_delete=models.CASCADE)
+    nome_disciplina = models.CharField(max_length=200)
     descricao = models.TextField(blank=True)
-    carga_horaria = models.ForeignKey(CargaHoraria, on_delete=models.CASCADE)
+    carga_horaria = models.CharField(max_length=10, choices=[
+        ('15h', '15h'),
+                ('20h', '20h'),
+                ('30h', '30h'),
+                ('54h', '54h'),
+                ('60h', '60h'),
+                ('90h', '90h'),
+            ], blank=False)
+    professor = models.CharField(max_length=200)
+    curso = models.CharField(max_length=10, choices=[('C&T', 'C&T')], blank=False)
+    grupo = models.IntegerField(blank=False )
     dia_da_semana = models.CharField(max_length=10, choices=[
                 ('segunda', 'Segunda-feira'),
                 ('terca', 'Terça-feira'),
@@ -53,15 +23,13 @@ class Disciplina(models.Model):
                 ('sabado', 'Sábado'),
                 ('domingo', 'Domingo'),
             ], blank=False)
-    horario_inicio = models.CharField(max_length=10, choices=[
-                ('Manha', 'Manha'),
-                ('Tarde', 'Tarde'),
-                ('Noite', 'Noite'),
+    
+    turno = models.CharField(max_length=10, choices=[
+                ('MANHA', 'MANHA'),
+                ('TARDE', 'TARDE'),
+                ('NOITE', 'NOITE'),
             ], blank=False)
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    grupo = models.IntegerField(blank=False )
     
     def __str__(self):
-        return self.nome.nome
+        return self.nome
 

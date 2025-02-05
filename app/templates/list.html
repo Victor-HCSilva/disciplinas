@@ -1,2 +1,23 @@
-<h1>Listagem</h1>
+{% extends 'base.html' %}
+
+
+{% block title %}Listagem{% endblock %}
 <a href="{% url INDEX  %}">index</a>
+{% block content %}
+<div class="container text-center">
+    <div class="container text-left" style="text-align: left !important;">
+        {% if disciplinas %}
+        {% for d in disciplinas %}
+            <p>Matéria - {{ d.nome }}{{ d.carga_horaria }} - Professor(a) - {{ d.professor }} - grupo: {{ d.grupo }}</p>
+            <p></p>
+            
+            <a class="btn btn-danger" href="{% url 'delete' id=d.id %}">Apagar</a>
+            <a class="btn btn-warning" href="{% url 'edit' id=d.id %}">Editar</a>
+        {% endfor %}
+    {% else %}
+        <p>Sem disciplinas cadastradas</p>
+    {% endif %}
+    </div>
+    
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class='container'>
+    <a href="{% url 'list' %}">Listagem</a>
     <h1>Adicionar matéria</h1>
     <h2 class="mt-4">Insira as disciplinas</h2>
     <form method="post" class="mt-3">
@@ -14,51 +15,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
-
-    <h1>Adicionar Nome de matéria</h1>
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form_nome_disciplina.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-
-    <h1>Nome professor</h1>
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form_pro.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-
-    <h1>Carga horária</h1>
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form_ch.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-
-    <h1>Nome do curso</h1>
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form_nome_curso.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-
-    <h1>Código da matéria</h1>
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        <div class="mb-3">
-            {{ form_codigo.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-</div>
 
 {% endblock %}
