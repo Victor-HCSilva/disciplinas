@@ -25,11 +25,11 @@
                             <td>{{ d.nome_disciplina }}</td>
                             <td>{{ d.carga_horaria }}</td>
                             <td>{{ d.professor }}</td>
-                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td><span class="text-danger"><strong>{{ d.grupo }}</strong></span></td>
                             <td>{{ d.turno }}</td>
                             <td>
-                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
-                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="{% url DELETE id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url EDIT id=d.id %}">Editar</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -41,11 +41,11 @@
                             <td>{{ d.nome_disciplina }}</td>
                             <td>{{ d.carga_horaria }}</td>
                             <td>{{ d.professor }}</td>
-                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td><span class="text-danger"><strong>{{ d.grupo }}</strong></span></td>
                             <td>{{ d.turno }}</td>
                             <td>
-                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
-                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="{% url DELETE id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url EDIT id=d.id %}">Editar</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -57,12 +57,12 @@
                             <td>{{ d.nome_disciplina }}</td>
                             <td>{{ d.carga_horaria }}</td>
                             <td>{{ d.professor }}</td>
-                            <td><span class="text-danger">{{ d.grupo }}</span></td>
+                            <td><span class="text-danger"> <strong>{{ d.grupo }}</strong></span></td>
                             <td>{{ d.turno }}</td>
                             <td>
                                 
-                                <a class="btn btn-danger btn-sm" href="{% url 'delete' id=d.id %}">Apagar</a>
-                                <a class="btn btn-warning btn-sm" href="{% url 'edit' id=d.id %}">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="{% url DELETE id=d.id %}">Apagar</a>
+                                <a class="btn btn-warning btn-sm" href="{% url EDIT id=d.id %}">Editar</a>
                             </td>
                         </tr>
                     {% endfor %}

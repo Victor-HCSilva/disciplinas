@@ -6,20 +6,36 @@
 {% block content %}
 <div class="container text-center">
     <div class="container text-left" style="text-align: left !important;">
-        {% if disciplinas %}
-        {% for d in disciplinas %}
-            <p> <strong>Matéria</strong>  {{ d.nome_disciplina }} <br><strong>CH</strong>: {{ d.carga_horaria }}  <br><strong>Professor(a)</strong> : {{ d.professor }} <br><strong>grupo: </strong> <span class="text-danger">{{ d.grupo }}</span></p>
-            
-            
-            <a class="btn btn-danger" href="{% url 'delete' id=d.id %}">Apagar</a>
-            <a class="btn btn-warning" href="{% url 'edit' id=d.id %}">Editar</a>
-            <br>
-            <br>
-            <br>
-        {% endfor %}
-    {% else %}
-        <p>Sem disciplinas cadastradas</p>
-    {% endif %}
+        
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Matéria</th>
+                <th>CH</th>
+                <th>Professor(a)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if disciplinas %}
+                {% for d in disciplinas %}
+                  <tr>
+                    <td>{{ d.nome_disciplina }}</td>
+                    <td>{{ d.carga_horaria }}</td>
+                    <td>{{ d.professor }}</td>
+                    <td>
+                      <a class="btn btn-danger" href="{% url DELETE id=d.id %}">Apagar</a>
+                      <a class="btn btn-warning" href="{% url EDIT id=d.id %}">Editar</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                <tr>
+                  <td colspan="4">Sem disciplinas cadastradas</td>
+                </tr>
+              {% endif %}
+            </tbody>
+          </table>
     </div>
     
 </div>

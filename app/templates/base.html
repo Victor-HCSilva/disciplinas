@@ -18,20 +18,23 @@
           <ul class="navbar-nav">
             <br>
             <li class="nav-item">
-              <img src="{% static './360_F_227450952_KQCMShHPOPebUXklULsKsROk5AvN6H1H.jpg' %}" alt="Descrição da imagem">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">INÍCIO</a>
+              <img src="{% static './download.png' %}" alt="Descrição da imagem">
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'index' %}">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'list' %}">Ver todas as matérias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'group' %}">Ver Grupos</a>
-            </li>
             
+              <a class="nav-link active" aria-current="page" href="{% url INDEX %}">INÍCIO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url INDEX %}">Inserir</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url LIST %}">Listagem</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url GROUP %}">Grupos</a>
+            </li>  
           </ul>
+          
         </div>
       </div>
     </nav>

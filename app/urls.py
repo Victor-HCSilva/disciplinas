@@ -8,6 +8,7 @@ urlpatterns = [
     path(f'{uname.EDIT}/<int:id>',views.edit, name=uname.EDIT ),#GET
     path(f'{uname.GROUP}/',views.group, name=uname.GROUP ),#GET
     path(f'{uname.DELETE}/<int:id>',views.delete, name=uname.DELETE ),#DELETE
+    path(f'{uname.BASE}/', views.pag, name=uname.BASE),#GET
     path('api/list/', api.TodoListView.as_view(), name='materia-list'),#GET
     path('api/list/<int:pk>/', api.TodoDetailView.as_view(), name='materia-detail'),#POST
 ]
