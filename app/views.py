@@ -4,12 +4,13 @@ from . import functions as fc
 from . forms import *
 from django.http import Http404
 
+#metodo de função
 def grupos(grupo):
     return Disciplina.objects.filter(grupo=grupo)
 
 def index(request):#POST
     form_disciplina = None  # Inicializa como None para verificar se foi processado
-    
+
     if request.method == 'POST':
         form_disciplina = DisciplinaForm(request.POST)
         if form_disciplina.is_valid():
@@ -21,11 +22,13 @@ def index(request):#POST
         form_disciplina = DisciplinaForm()
     context = {
         'INDEX':uname.INDEX ,
-        'LIST':uname.LIST,    
+        'LIST':uname.LIST,
         'EDIT':uname.EDIT,
         'DELETE':uname.DELETE,
         'GROUP':uname.GROUP,
+        "CH":uname.CH,
         'form_disciplina': form_disciplina,
+
     }
 
     return render(request, uname.PATH_INDEX, context=context)
@@ -35,37 +38,40 @@ def list(request):#GET
         objects = Disciplina.objects.all()
         context = {
             'INDEX':uname.INDEX ,
-            'LIST':uname.LIST,    
+            'LIST':uname.LIST,
             'EDIT':uname.EDIT,
             'DELETE':uname.DELETE,
             'GROUP':uname.GROUP,
             'disciplinas':objects,
+            "CH":uname.CH,
+
         }
         return render(request,uname.PATH_LIST, context)
     else:
         raise Http404("Erro Tipo de requisição inválida")
-    
+
 def edit(request, id):#GET
     disciplina = get_object_or_404(Disciplina, id=id)
 
     if request.method == 'POST':
-        form = DisciplinaForm(request.POST, instance=disciplina)  
+        form = DisciplinaForm(request.POST, instance=disciplina)
         if form.is_valid():
             form.save()
             return redirect(uname.LIST)
-    else: 
-        form = DisciplinaForm(instance=disciplina) 
+    else:
+        form = DisciplinaForm(instance=disciplina)
         context = {
             'INDEX':uname.INDEX ,
-            'LIST':uname.LIST,    
+            'LIST':uname.LIST,
             'EDIT':uname.EDIT,
             'DELETE':uname.DELETE,
             'GROUP':uname.GROUP,
             'form':form,
+            "CH":uname.CH,
             'disciplina':disciplina,
         }
         return render(request,uname.PATH_EDIT, context)
-    
+
 def delete(request, id):
     disciplina = get_object_or_404(Disciplina, id=id)
 
@@ -75,11 +81,12 @@ def delete(request, id):
     context = {
         'disciplina': disciplina,
         'INDEX':uname.INDEX ,
-        'LIST':uname.LIST,    
+        'LIST':uname.LIST,
         'EDIT':uname.EDIT,
         'DELETE':uname.DELETE,
+        "CH":uname.CH,
         'GROUP':uname.GROUP,
-        
+
         }
 
     # Se for GET, exibe uma página de confirmação
@@ -91,14 +98,15 @@ def group(request):#GET
         group2 = grupos(2)
         group3 = grupos(3)
         disciplinas = Disciplina.objects.all()
-        
+
         context = {
             'disciplinas':disciplinas,
             'INDEX':uname.INDEX ,
-            'LIST':uname.LIST,    
+            'LIST':uname.LIST,
             'EDIT':uname.EDIT,
             'DELETE':uname.DELETE,
             'GROUP':uname.GROUP,
+            "CH":uname.CH,
             'grupo1':group1,
             'grupo2':group2,
             'grupo3':group3,
@@ -110,11 +118,10 @@ def group(request):#GET
 def pag(request):#GET
     context = {
         'INDEX':uname.INDEX ,
-        'LIST':uname.LIST,    
+        'LIST':uname.LIST,
         'EDIT':uname.EDIT,
         'DELETE':uname.DELETE,
         'GROUP':uname.GROUP,
+        "CH":uname.CH,
         }
     return render(request,uname.PATH_BASE, context)
-    
-    
