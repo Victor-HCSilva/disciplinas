@@ -10,7 +10,7 @@ GROUP = 'group'
 BASE = 'base'
 CH = "carga_horaria"
 ADICIONAR_CH = "adicionar_ch"
-ATUALIZAR_CH = "atulizar_ch"
+ATUALIZAR_CH = "atualizar_ch"
 #PATHS
 PATH_INDEX = INDEX+ARCHIVE
 PATH_LIST = LIST+ARCHIVE

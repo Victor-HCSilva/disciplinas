@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/list/<int:pk>/', api.TodoDetailView.as_view(), name='materia-detail'),#POST
     path(f'{uname.CH}/', analise.analise, name=uname.CH),#GET
     path(f'{uname.ADICIONAR_CH}/', analise.add_ch, name=uname.ADICIONAR_CH),#POST
+    path(f'{uname.ATUALIZAR_CH}/', analise.atualizar, name=uname.ATUALIZAR_CH),#POST
 
 
 ]
