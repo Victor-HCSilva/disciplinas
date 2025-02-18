@@ -12,6 +12,7 @@ context = {
     'GROUP':uname.GROUP,
     "CH":uname.CH,
     "ADICIONAR_CH":uname.ADICIONAR_CH,
+    "ATUALIZAR_CH":uname.ATUALIZAR_CH,
 }
 
 #metodo de função

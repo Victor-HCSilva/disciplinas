@@ -15,6 +15,7 @@ context = {
     'GROUP':uname.GROUP,
     "CH":uname.CH,
     "ADICIONAR_CH":uname.ADICIONAR_CH,
+    "ATUALIZAR_CH":uname.ATUALIZAR_CH,
 }
 
 def analise(request):
@@ -41,7 +42,6 @@ def atualizar(request):
     #se for adiconar datas vai fazer mais sentido existirem gráficos
     if request.method=="POST":
         form = AnaliseForm(request.POST, instance=get_object_or_404(Analise, id=4))
-        form = AnaliseForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(uname.CH)
