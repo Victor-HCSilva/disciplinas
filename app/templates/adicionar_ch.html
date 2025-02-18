@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Listagem{% endblock %}
+{% block title %}Adicionar horários{% endblock %}
 
 {% block content %}
 <a id="a-link" class="btn btn-dark" href="{% url 'list'  %}">Listagem</a>
 <a id="a-link" class="btn btn-dark" href="{% url 'group'  %}">Grupos</a>
+
 
 <div class='container'>
 
@@ -17,5 +18,23 @@
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
+    <script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+    <script defer>
+        const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        const yValues = [7,8,8,9,9,9,10,11,14,14,15];
 
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor:"rgba(0,0,255,1.0)",
+              borderColor: "rgba(0,0,255,0.1)",
+              data: yValues }]
+      },
+      options:{...}
+    });
+        </script>
 {% endblock %}%

@@ -33,5 +33,5 @@ class Disciplina(models.Model):
 class Analise(models.Model):
     ch_total = models.IntegerField(default=2400)
     ch_optativa = models.IntegerField(default=200)
-    ch_obrigratoria = models.IntegerField(default=1200)
+    ch_obrigatoria = models.IntegerField(default=1200)
     ch_concluida = models.IntegerField(default=0)

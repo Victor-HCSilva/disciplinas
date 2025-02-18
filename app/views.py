@@ -28,6 +28,7 @@ def index(request):#POST
         'GROUP':uname.GROUP,
         "CH":uname.CH,
         'form_disciplina': form_disciplina,
+        "ADICIONAR_CH":uname.ADICIONAR_CH,
 
     }
 
@@ -44,6 +45,7 @@ def list(request):#GET
             'GROUP':uname.GROUP,
             'disciplinas':objects,
             "CH":uname.CH,
+            "ADICIONAR_CH":uname.ADICIONAR_CH,
 
         }
         return render(request,uname.PATH_LIST, context)
@@ -69,6 +71,7 @@ def edit(request, id):#GET
             'form':form,
             "CH":uname.CH,
             'disciplina':disciplina,
+            "ADICIONAR_CH":uname.ADICIONAR_CH,
         }
         return render(request,uname.PATH_EDIT, context)
 
@@ -78,6 +81,7 @@ def delete(request, id):
     if request.method == 'POST':  # Use POST para a exclusão
         disciplina.delete()
         return redirect(uname.LIST)  # Redireciona para a lista de disciplinas
+
     context = {
         'disciplina': disciplina,
         'INDEX':uname.INDEX ,
@@ -85,6 +89,7 @@ def delete(request, id):
         'EDIT':uname.EDIT,
         'DELETE':uname.DELETE,
         "CH":uname.CH,
+        "ADICIONAR_CH":uname.ADICIONAR_CH,
         'GROUP':uname.GROUP,
 
         }
@@ -106,6 +111,7 @@ def group(request):#GET
             'EDIT':uname.EDIT,
             'DELETE':uname.DELETE,
             'GROUP':uname.GROUP,
+            "ADICIONAR_CH":uname.ADICIONAR_CH,
             "CH":uname.CH,
             'grupo1':group1,
             'grupo2':group2,
@@ -122,6 +128,7 @@ def pag(request):#GET
         'EDIT':uname.EDIT,
         'DELETE':uname.DELETE,
         'GROUP':uname.GROUP,
+        "ADICIONAR_CH":uname.ADICIONAR_CH,
         "CH":uname.CH,
         }
     return render(request,uname.PATH_BASE, context)
