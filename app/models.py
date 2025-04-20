@@ -25,6 +25,7 @@ class Disciplina(models.Model):
                 ('TARDE', 'TARDE'),
                 ('NOITE', 'NOITE'),
             ], blank=False)
+    cursando = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
@@ -35,3 +36,6 @@ class Analise(models.Model):
     ch_optativa = models.IntegerField(default=200)
     ch_obrigatoria = models.IntegerField(default=1200)
     ch_concluida = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"Carga Horaria restante: {self.ch_concluida -( self.ch_optativa + self.ch_obrigatoria) }"

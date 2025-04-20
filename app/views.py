@@ -5,19 +5,30 @@ from . forms import *
 from django.http import Http404
 
 context = {
-    'INDEX':uname.INDEX ,
-    'LIST':uname.LIST,
-    'EDIT':uname.EDIT,
-    'DELETE':uname.DELETE,
-    'GROUP':uname.GROUP,
-    "CH":uname.CH,
-    "ADICIONAR_CH":uname.ADICIONAR_CH,
-    "ATUALIZAR_CH":uname.ATUALIZAR_CH,
-}
+        'INDEX':uname.INDEX ,
+        'LIST':uname.LIST,
+        'EDIT':uname.EDIT,
+        'DELETE':uname.DELETE,
+        'GROUP':uname.GROUP,
+        "CH":uname.CH,
+        "ADICIONAR_CH":uname.ADICIONAR_CH,
+        "ATUALIZAR_CH":uname.ATUALIZAR_CH,
+        }
 
 #metodo de função
 def grupos(grupo):
     return Disciplina.objects.filter(grupo=grupo)
+
+def cursando():
+    return Disciplina.objects.filter(cursando=True)
+
+def horas(model):
+    soma = 0
+    for h in model:
+        if h.cursando:
+            h.carga_horaria = h.carga_horaria.replace("h","")
+            soma += int(h.carga_horaria)
+    return soma
 
 def index(request):#POST
     form_disciplina = DisciplinaForm()  # Inicializa como None para verificar se foi processado
@@ -55,6 +66,7 @@ def edit(request, id):#GET
     else:
         form = DisciplinaForm(instance=disciplina)
         context["form"] = form
+        context["disciplina"] = disciplina
         return render(request,uname.PATH_EDIT, context)
 
 def delete(request, id):
@@ -83,3 +95,12 @@ def group(request):#GET
 
 def pag(request):#GET
     return render(request,uname.PATH_BASE, context)
+
+def main(request):#GET
+    if (request.method == "GET"):
+        objects = Disciplina.objects.all()
+        materias_atuais = cursando() 
+        context["disciplinas"] = materias_atuais
+        context["horas"] = horas(objects)
+        return render(request,uname.PATH_LIST, context)
+ 

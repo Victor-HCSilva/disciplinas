@@ -38,7 +38,7 @@ def add_ch(request):
     return render(request, f"{uname.PATH_ADICIONAR_CH}", context)
 
 def atualizar(request):
-    #o id muda sempre é bom conferir para ver qual que está com os da dos desejados
+    #o id muda sempre, com frequência conferir qual está com os dados desejados
     #se for adiconar datas vai fazer mais sentido existirem gráficos
     if request.method=="POST":
         form = AnaliseForm(request.POST, instance=get_object_or_404(Analise, id=4))

@@ -1,0 +1,2 @@
+- A estrutura atual está bém básica, mas possui boa parte da lógica que 
+quero passar
